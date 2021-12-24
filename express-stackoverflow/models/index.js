@@ -8,7 +8,9 @@ const User = sequelize.define('user', {
     role: { type: DataTypes.STRING, defaultValue: 'USER' },
     email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
-    image: { type: DataTypes.STRING }
+    image: { type: DataTypes.STRING },
+    isActivated: { type: DataTypes.BOOLEAN, defaultValue: false },
+    activationLink: { type: DataTypes.STRING }
 })
 
 const Problem = sequelize.define('problem', {

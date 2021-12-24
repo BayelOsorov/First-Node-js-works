@@ -10,4 +10,23 @@ const signup = async (req, res) => {
         console.log(e);
     }
 }
-module.exports = { signup }
+const login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body
+        const userData = await UserService.login(email, password)
+        res.json(userData)
+    }
+    catch (e) {
+        next(e)
+    }
+}
+const getAll = async (req, res, next) => {
+    try {
+        const users = await UserService.getAll()
+        res.json(users)
+    }
+    catch (e) {
+        next(e);
+    }
+}
+module.exports = { signup, getAll, login }
